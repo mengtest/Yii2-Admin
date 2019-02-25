@@ -15,7 +15,7 @@ namespace backend\controllers;
 use yii\web\Controller;
 
 /**
- * BaseController 基类控制器
+ * 基类控制器
  *
  * PHP version 7
  *
@@ -26,5 +26,17 @@ use yii\web\Controller;
  */
 class BaseController extends Controller
 {
+    public function beforeAction($action)
+    {
+        if (!parent::beforeAction($action)) {
+            return false;
+        }
 
+        if (\Yii::$app->user->isGuest) {
+            $this->redirect(['login/login']);
+            return false;
+        }
+
+        return true;
+    }
 }

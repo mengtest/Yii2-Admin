@@ -12,7 +12,8 @@
 
 namespace backend\controllers;
 
-use yii\web\Controller;
+use Yii;
+use backend\controllers\BaseController;
 
 /**
  * IndexController 首页控制器
@@ -24,7 +25,7 @@ use yii\web\Controller;
  * @author    wangyaxian <1822581649@qq.com>
  * @link      https://github.com/duiying/Yii2-Admin
  */
-class IndexController extends Controller
+class IndexController extends BaseController
 {
     /**
      * 首页
@@ -43,6 +44,8 @@ class IndexController extends Controller
      */
     public function actionWelcome()
     {
-        return $this->render('welcome');
+        return $this->render('welcome', [
+            'info' => Yii::$app->system->getInfo()
+        ]);
     }
 }

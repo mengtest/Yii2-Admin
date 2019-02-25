@@ -19,11 +19,11 @@
     </ul>
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
-            <a href="javascript:;">admin</a>
+            <a href="javascript:;"><?= Yii::$app->user->identity->admin_name ?></a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
                 <dd><a onclick="x_admin_show('个人信息','http://www.baidu.com')">个人信息</a></dd>
                 <dd><a onclick="x_admin_show('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
-                <dd><a href="./login.html">退出</a></dd>
+                <dd><a href="javascript:;" onclick="logout()">退出</a></dd>
             </dl>
         </li>
         <li class="layui-nav-item to-index"><a href="/">前台首页</a></li>
@@ -263,6 +263,12 @@
 <!-- 中部结束 -->
 <!-- 底部开始 -->
 <div class="footer">
-    <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved</div>
+    <div class="copyright">Copyright ©2019 github.com/duiying All Rights Reserved</div>
 </div>
 <!-- 底部结束 -->
+
+<script type="text/javascript">
+    function logout() {
+        dialog.confirm('确定要退出吗?', "<?= Url::to(['login/logout']) ?>", "<?= Url::to(['login/login']) ?>", {'_csrf-backend' : '<?= Yii::$app->request->csrfToken ?>'});
+    }
+</script>

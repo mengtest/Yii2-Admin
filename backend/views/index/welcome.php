@@ -1,6 +1,6 @@
 <div class="x-body layui-anim layui-anim-up">
     <blockquote class="layui-elem-quote">欢迎管理员：
-        <span class="x-red">test</span>！当前时间:2018-04-25 20:50:53</blockquote>
+        <span class="x-red"><?= Yii::$app->user->identity->admin_name ?></span>！当前时间:<?= $info['time'] ?></blockquote>
     <fieldset class="layui-elem-field">
         <legend>数据统计</legend>
         <div class="layui-field-box">
@@ -85,38 +85,32 @@
             <table class="layui-table">
                 <tbody>
                 <tr>
-                    <th>xxx版本</th>
-                    <td>1.0.180420</td></tr>
+                    <th>Yii版本</th>
+                    <td><?= $info['yii'] ?></td></tr>
                 <tr>
                     <th>服务器地址</th>
-                    <td>x.xuebingsi.com</td></tr>
+                    <td><?= $info['ip'] ?></td></tr>
                 <tr>
                     <th>操作系统</th>
-                    <td>WINNT</td></tr>
+                    <td><?= $info['system'] ?></td></tr>
                 <tr>
-                    <th>运行环境</th>
-                    <td>Apache/2.4.23 (Win32) OpenSSL/1.0.2j mod_fcgid/2.3.9</td></tr>
+                    <th>WEB运行环境</th>
+                    <td><?= $info['web'] ?></td></tr>
                 <tr>
                     <th>PHP版本</th>
-                    <td>5.6.27</td></tr>
-                <tr>
-                    <th>PHP运行方式</th>
-                    <td>cgi-fcgi</td></tr>
+                    <td><?= $info['php'] ?></td></tr>
                 <tr>
                     <th>MYSQL版本</th>
-                    <td>5.5.53</td></tr>
+                    <td><?= $info['mysql'] ?></td></tr>
                 <tr>
-                    <th>ThinkPHP</th>
-                    <td>5.0.18</td></tr>
+                    <th>上传大小限制</th>
+                    <td><?= $info['upload'] ?></td></tr>
                 <tr>
-                    <th>上传附件限制</th>
-                    <td>2M</td></tr>
+                    <th>POST大小限制</th>
+                    <td><?= $info['post'] ?></td></tr>
                 <tr>
-                    <th>执行时间限制</th>
-                    <td>30s</td></tr>
-                <tr>
-                    <th>剩余空间</th>
-                    <td>86015.2M</td></tr>
+                    <th>PHP执行时间限制</th>
+                    <td><?= $info['execute'] ?>s</td></tr>
                 </tbody>
             </table>
         </div>
@@ -128,12 +122,13 @@
                 <tbody>
                 <tr>
                     <th>版权所有</th>
-                    <td>xuebingsi(xuebingsi)
-                        <a href="http://x.xuebingsi.com/" class='x-a' target="_blank">访问官网</a></td>
+                    <td>
+                        <a href="http://github.com/duiying/Yii2-Admin" class='x-a' target="_blank">Github</a>
+                    </td>
                 </tr>
                 <tr>
                     <th>开发者</th>
-                    <td>马志斌(113664000@qq.com)</td></tr>
+                    <td>王亚仙(1822581649@qq.com)</td></tr>
                 </tbody>
             </table>
         </div>

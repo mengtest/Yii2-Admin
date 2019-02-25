@@ -12,6 +12,9 @@
 
 namespace backend\controllers;
 
+use backend\models\Admin;
+use common\models\MsgUtil;
+use Yii;
 use yii\web\Controller;
 
 /**
@@ -26,8 +29,25 @@ use yii\web\Controller;
  */
 class LoginController extends Controller
 {
+    /**
+     * 登录
+     *
+     * @return string
+     */
     public function actionLogin()
     {
+        if (Yii::$app->request->isAjax) {
+            $model = new Admin();
+            $post = Yii::$app->request->post();
+            $res = $model->login($post);
+            return MsgUtil::dataFormat($res);
+        }
         return $this->render('login');
+    }
+
+    public function actionLogout()
+    {
+        Yii::$app->user->logout(false);
+        return MsgUtil::dataFormat([MsgUtil::SUCCESS_CODE, MsgUtil::SUCCESS_MSG]);
     }
 }
