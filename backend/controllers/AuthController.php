@@ -13,12 +13,12 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Admin;
+use backend\models\Auth;
 use common\models\MsgUtil;
 use backend\controllers\BaseController;
 
 /**
- * 管理员控制器
+ * 权限控制器
  *
  * PHP version 7
  *
@@ -27,26 +27,32 @@ use backend\controllers\BaseController;
  * @author    wangyaxian <1822581649@qq.com>
  * @link      https://github.com/duiying/Yii2-Admin
  */
-class AdminController extends BaseController
+class AuthController extends BaseController
 {
     /**
-     * 修改密码
+     * 列表
      *
      * @return string
      */
-    public function actionChangePass()
-    {
-        if (Yii::$app->request->isAjax) {
-            $model = new Admin();
-            $post = Yii::$app->request->post();
-            $res = $model->changePass($post);
-            return MsgUtil::dataFormat($res);
-        }
-        return $this->render('change-pass');
-    }
-
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * 添加
+     *
+     * @return string
+     */
+    public function actionCreate()
+    {
+        $pidList = Auth::pidList();
+        if (Yii::$app->request->isAjax) {
+            $model = new Auth();
+            $post = Yii::$app->request->post();
+            $res = $model->create($post);
+            return MsgUtil::dataFormat($res);
+        }
+        return $this->render('create', ['pidList' => $pidList]);
     }
 }

@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bfdfed1-830a-4bc5-ad53-1da80f23dd40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/controllers/AdminController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/views/admin/change-pass.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Yii2-Admin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Yii2-Admin.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/AuthController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/controllers/RoleController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/views/admin/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/views/auth/create.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/views/auth/index.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/views/role/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/models/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/models/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/views/index/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/index/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/views/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/views/login/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/web/X-admin/dialog.js" beforeDir="false" afterPath="$PROJECT_DIR$/backend/web/X-admin/dialog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/models/MsgUtil.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/MsgUtil.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +37,8 @@
           <entry key="gitignore" value="2" />
           <entry key="ico" value="1" />
           <entry key="js" value="10" />
-          <entry key="md" value="4" />
-          <entry key="php" value="105" />
+          <entry key="md" value="5" />
+          <entry key="php" value="123" />
           <entry key="ts" value="1" />
           <entry key="txt" value="4" />
         </counts>
@@ -49,8 +48,8 @@
           <entry key="CSS" value="1" />
           <entry key="Image" value="1" />
           <entry key="JavaScript" value="10" />
-          <entry key="Markdown" value="4" />
-          <entry key="PHP" value="105" />
+          <entry key="Markdown" value="5" />
+          <entry key="PHP" value="123" />
           <entry key="PLAIN_TEXT" value="6" />
           <entry key="TypeScript" value="1" />
         </counts>
@@ -58,15 +57,15 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="js" value="242" />
-          <entry key="md" value="19" />
-          <entry key="php" value="4725" />
+          <entry key="md" value="24" />
+          <entry key="php" value="6335" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JavaScript" value="242" />
-          <entry key="Markdown" value="19" />
-          <entry key="PHP" value="4725" />
+          <entry key="Markdown" value="24" />
+          <entry key="PHP" value="6335" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.class">
@@ -79,13 +78,83 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/controllers/BaseController.php">
+        <entry file="file://$PROJECT_DIR$/backend/controllers/AuthController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+            <state relative-caret-position="181">
+              <caret line="41" column="7" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+              <folding>
+                <element signature="e#6#184#0#PHP" expanded="true" />
+                <element signature="e#218#226#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/controllers/LoginController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
+              <folding>
+                <element signature="e#6#184#0#PHP" expanded="true" />
+                <element signature="e#218#243#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/models/Admin.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="368">
+              <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
+              <folding>
+                <element signature="e#6#184#0#PHP" expanded="true" />
+                <element signature="e#213#239#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/views/auth/create.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/models/Auth.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="85" column="11" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
+              <folding>
+                <element signature="e#6#184#0#PHP" expanded="true" />
+                <element signature="e#213#221#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/models/MsgUtil.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="331">
+              <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
               <folding>
                 <element signature="e#6#184#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/views/index/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="23">
+              <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -103,6 +172,7 @@
       <find>113</find>
       <find>个人信息</find>
       <find>changePass</find>
+      <find>管理员</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\wyx\Desktop\Yii2-Admin</dir>
@@ -123,15 +193,20 @@
         <option value="$PROJECT_DIR$/backend/controllers/IndexController.php" />
         <option value="$PROJECT_DIR$/backend/views/index/welcome.php" />
         <option value="$PROJECT_DIR$/backend/components/SystemInfo.php" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/backend/views/login/login.php" />
         <option value="$PROJECT_DIR$/common/models/MsgUtil.php" />
         <option value="$PROJECT_DIR$/backend/web/X-admin/dialog.js" />
         <option value="$PROJECT_DIR$/backend/views/admin/change-pass.php" />
-        <option value="$PROJECT_DIR$/backend/controllers/AdminController.php" />
-        <option value="$PROJECT_DIR$/backend/views/index/index.php" />
         <option value="$PROJECT_DIR$/backend/models/Admin.php" />
         <option value="$PROJECT_DIR$/backend/controllers/LoginController.php" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/backend/controllers/AdminController.php" />
+        <option value="$PROJECT_DIR$/backend/controllers/RoleController.php" />
+        <option value="$PROJECT_DIR$/backend/views/index/index.php" />
+        <option value="$PROJECT_DIR$/backend/views/auth/index.php" />
+        <option value="$PROJECT_DIR$/backend/views/auth/create.php" />
+        <option value="$PROJECT_DIR$/backend/models/Auth.php" />
+        <option value="$PROJECT_DIR$/backend/controllers/AuthController.php" />
       </list>
     </option>
   </component>
@@ -224,8 +299,8 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="251" />
-    <option name="y" value="53" />
+    <option name="x" value="223" />
+    <option name="y" value="20" />
     <option name="width" value="1624" />
     <option name="height" value="804" />
   </component>
@@ -253,12 +328,6 @@
               <item name="Yii2-Admin" type="b2602c69:ProjectViewProjectNode" />
               <item name="Yii2-Admin" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Yii2-Admin" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Yii2-Admin" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -266,7 +335,14 @@
               <item name="Yii2-Admin" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Yii2-Admin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Yii2-Admin" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="auth" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -282,12 +358,12 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\wyx\Desktop\Yii2-Admin\common\models" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\wyx\Desktop\Yii2-Admin\backend\controllers" />
       <recent name="C:\Users\wyx\Desktop\Yii2-Admin\backend\web\X-admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\wyx\Desktop\Yii2-Admin\common\models" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -313,12 +389,12 @@
       <option name="presentableId" value="Default" />
       <updated>1550983447993</updated>
       <workItem from="1550983449168" duration="24668000" />
-      <workItem from="1551104935523" duration="5066000" />
+      <workItem from="1551104935523" duration="13327000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29734000" />
+    <option name="totallyTimeSpent" value="37995000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -337,7 +413,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.16178067" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32464713" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -507,16 +583,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="207">
-            <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/web/X-admin/js/xadmin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3321">
@@ -545,45 +611,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/views/admin/change-pass.php">
+    <entry file="file://$PROJECT_DIR$/backend/controllers/BaseController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-589">
-          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/models/MsgUtil.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="41" column="31" lean-forward="true" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+        <state relative-caret-position="262">
+          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
           <folding>
             <element signature="e#6#184#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/views/index/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="184">
+            <caret line="8" column="28" lean-forward="true" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/models/Admin.php">
+    <entry file="file://$PROJECT_DIR$/backend/views/admin/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-69">
-          <caret line="106" column="7" lean-forward="true" selection-start-line="106" selection-start-column="7" selection-end-line="106" selection-end-column="7" />
-          <folding>
-            <element signature="e#6#184#0#PHP" expanded="true" />
-            <element signature="e#213#239#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="138">
+          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/controllers/AdminController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="39" column="26" lean-forward="true" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+        <state relative-caret-position="319">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
           <folding>
             <element signature="e#6#184#0#PHP" expanded="true" />
             <element signature="e#218#226#0#PHP" expanded="true" />
@@ -591,10 +649,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/role/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/controllers/RoleController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+          <folding>
+            <element signature="e#6#184#0#PHP" expanded="true" />
+            <element signature="e#218#226#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/admin/change-pass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" lean-forward="true" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/auth/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-230">
+          <caret line="17" column="89" selection-start-line="17" selection-start-column="89" selection-end-line="17" selection-end-column="89" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#a#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#xblock#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+            <element signature="e#2850#2856#0#HTML" expanded="true" />
+            <element signature="e#2856#2862#0#HTML" expanded="true" />
+            <element signature="e#2862#2868#0#HTML" expanded="true" />
+            <element signature="e#2868#2874#0#HTML" expanded="true" />
+            <element signature="e#4046#4052#0#HTML" expanded="true" />
+            <element signature="e#4052#4058#0#HTML" expanded="true" />
+            <element signature="e#4058#4064#0#HTML" expanded="true" />
+            <element signature="e#4064#4070#0#HTML" expanded="true" />
+            <element signature="e#4070#4076#0#HTML" expanded="true" />
+            <element signature="e#4076#4082#0#HTML" expanded="true" />
+            <element signature="e#4082#4088#0#HTML" expanded="true" />
+            <element signature="e#4088#4094#0#HTML" expanded="true" />
+            <element signature="e#4094#4100#0#HTML" expanded="true" />
+            <element signature="e#5201#5207#0#HTML" expanded="true" />
+            <element signature="e#5207#5213#0#HTML" expanded="true" />
+            <element signature="e#5213#5219#0#HTML" expanded="true" />
+            <element signature="e#5219#5225#0#HTML" expanded="true" />
+            <element signature="e#5225#5231#0#HTML" expanded="true" />
+            <element signature="e#5231#5237#0#HTML" expanded="true" />
+            <element signature="e#5237#5243#0#HTML" expanded="true" />
+            <element signature="e#5243#5249#0#HTML" expanded="true" />
+            <element signature="e#5249#5255#0#HTML" expanded="true" />
+            <element signature="e#7493#7499#0#HTML" expanded="true" />
+            <element signature="e#7499#7505#0#HTML" expanded="true" />
+            <element signature="e#7505#7511#0#HTML" expanded="true" />
+            <element signature="e#7511#7517#0#HTML" expanded="true" />
+            <element signature="e#8618#8624#0#HTML" expanded="true" />
+            <element signature="e#8624#8630#0#HTML" expanded="true" />
+            <element signature="e#8630#8636#0#HTML" expanded="true" />
+            <element signature="e#8636#8642#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/models/MsgUtil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+          <folding>
+            <element signature="e#6#184#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backend/controllers/LoginController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="49" column="6" lean-forward="true" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
+        <state relative-caret-position="355">
+          <caret line="41" column="30" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
           <folding>
             <element signature="e#6#184#0#PHP" expanded="true" />
             <element signature="e#218#243#0#PHP" expanded="true" />
@@ -602,12 +737,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/controllers/BaseController.php">
+    <entry file="file://$PROJECT_DIR$/backend/views/index/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="20" column="2" lean-forward="true" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+        <state relative-caret-position="23">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/views/auth/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/models/Admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="97" lean-forward="true" selection-start-line="97" selection-end-line="97" />
           <folding>
             <element signature="e#6#184#0#PHP" expanded="true" />
+            <element signature="e#213#239#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/models/Auth.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="85" column="11" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
+          <folding>
+            <element signature="e#6#184#0#PHP" expanded="true" />
+            <element signature="e#213#221#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/controllers/AuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="41" column="7" lean-forward="true" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+          <folding>
+            <element signature="e#6#184#0#PHP" expanded="true" />
+            <element signature="e#218#226#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

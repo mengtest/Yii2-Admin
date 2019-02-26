@@ -18,7 +18,7 @@ use common\models\MsgUtil;
 use backend\controllers\BaseController;
 
 /**
- * 管理员控制器
+ * 角色控制器
  *
  * PHP version 7
  *
@@ -27,24 +27,8 @@ use backend\controllers\BaseController;
  * @author    wangyaxian <1822581649@qq.com>
  * @link      https://github.com/duiying/Yii2-Admin
  */
-class AdminController extends BaseController
+class RoleController extends BaseController
 {
-    /**
-     * 修改密码
-     *
-     * @return string
-     */
-    public function actionChangePass()
-    {
-        if (Yii::$app->request->isAjax) {
-            $model = new Admin();
-            $post = Yii::$app->request->post();
-            $res = $model->changePass($post);
-            return MsgUtil::dataFormat($res);
-        }
-        return $this->render('change-pass');
-    }
-
     public function actionIndex()
     {
         return $this->render('index');
