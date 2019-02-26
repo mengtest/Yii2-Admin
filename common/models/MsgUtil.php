@@ -38,6 +38,8 @@ class MsgUtil
     const FAIL_MSG = '操作失败';
     const FAIL_VALIDATE = '数据格式校验失败';
     const NAME_OR_PASS_ERROR = '用户名或者密码错误';
+    const PASS_ERROR = '原密码输入错误';
+    const SAVE_FAIL = '数据保存失败';
 
     /**
      * 格式化AJAX返回的数据

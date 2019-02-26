@@ -6,7 +6,7 @@
     <div class="message">Yii2-Admin</div>
     <div id="darkbannerwrap"></div>
 
-    <form class="layui-form" action="badiu.com" id="dataSet" onsubmit="return present();">
+    <form class="layui-form" id="dataSet" onsubmit="return present();">
         <input name="_csrf-backend" type="hidden" value="<?= Yii::$app->request->csrfToken ?>">
 
         <input name="admin_name" placeholder="用户名"  type="text" required class="layui-input" >

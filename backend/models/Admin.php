@@ -29,6 +29,9 @@ use yii\web\IdentityInterface;
  */
 class Admin extends ActiveRecord implements IdentityInterface
 {
+    public $newPass;
+    public $rePass;
+
     /**
      * {@inheritdoc}
      */
@@ -49,7 +52,10 @@ class Admin extends ActiveRecord implements IdentityInterface
             [['login_ip'], 'string', 'max' => 20],
 
             ['admin_name', 'required', 'message' => '用户名不能为空', 'on' => ['login']],
-            ['admin_pass', 'required', 'message' => '密码不能为空', 'on' => ['login']],
+            ['admin_pass', 'required', 'message' => '密码不能为空', 'on' => ['login', 'changePass']],
+            ['newPass', 'required', 'message' => '新密码不能为空', 'on' => ['changePass']],
+            ['rePass', 'required', 'message' => '确认密码不能为空', 'on' => ['changePass']],
+            ['rePass', 'compare', 'compareAttribute' => 'newPass', 'message' => '两次密码输入不一致', 'on' => ['changePass']],
         ];
     }
 
@@ -92,6 +98,37 @@ class Admin extends ActiveRecord implements IdentityInterface
 
             // 用户名或密码错误
             return [MsgUtil::FAIL_CODE, MsgUtil::NAME_OR_PASS_ERROR];
+        }
+
+        // 数据格式校验失败
+        return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_VALIDATE];
+    }
+
+    /**
+     * 修改密码
+     *
+     * @param $post
+     * @return array
+     * @throws \yii\base\Exception
+     */
+    public function changePass($post)
+    {
+        $this->scenario = 'changePass';
+
+        if ($this->load($post, '') && $this->validate()) {
+            $where = ['admin_id' => Yii::$app->user->identity->getId()];
+            $model = self::findOne($where);
+            if ($model && Yii::$app->getSecurity()->validatePassword($this->admin_pass, $model->admin_pass)) {
+                // 原密码输入正确
+                $model->admin_pass = Yii::$app->getSecurity()->generatePasswordHash($this->newPass);
+                if ($model->save()) {
+                    return [MsgUtil::SUCCESS_CODE, MsgUtil::SUCCESS_MSG];
+                }
+                return [MsgUtil::FAIL_CODE, MsgUtil::SAVE_FAIL];
+            }
+
+            // 用户名或密码错误
+            return [MsgUtil::FAIL_CODE, MsgUtil::PASS_ERROR];
         }
 
         // 数据格式校验失败

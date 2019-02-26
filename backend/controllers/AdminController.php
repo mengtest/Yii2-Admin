@@ -12,13 +12,13 @@
 
 namespace backend\controllers;
 
+use Yii;
 use backend\models\Admin;
 use common\models\MsgUtil;
-use Yii;
-use yii\web\Controller;
+use backend\controllers\BaseController;
 
 /**
- * LoginController 登录控制器
+ * 管理员控制器
  *
  * PHP version 7
  *
@@ -27,32 +27,21 @@ use yii\web\Controller;
  * @author    wangyaxian <1822581649@qq.com>
  * @link      https://github.com/duiying/Yii2-Admin
  */
-class LoginController extends Controller
+class AdminController extends BaseController
 {
     /**
-     * 登录
+     * 修改密码
      *
      * @return string
      */
-    public function actionLogin()
+    public function actionChangePass()
     {
         if (Yii::$app->request->isAjax) {
             $model = new Admin();
             $post = Yii::$app->request->post();
-            $res = $model->login($post);
+            $res = $model->changePass($post);
             return MsgUtil::dataFormat($res);
         }
-        return $this->render('login');
-    }
-
-    /**
-     * 退出
-     *
-     * @return string
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout(false);
-        return MsgUtil::dataFormat([MsgUtil::SUCCESS_CODE, MsgUtil::SUCCESS_MSG]);
+        return $this->render('change-pass');
     }
 }

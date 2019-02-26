@@ -25,7 +25,7 @@ var dialog = {
      * @param string message 提示信息
      * @param string url 成功之后跳转地址
      */
-    success : function(message, url) {
+    success : function(message, url = '') {
         layer.open({
             content : message,
             icon    : 1,
@@ -36,7 +36,12 @@ var dialog = {
             shade   : 0.3,
             offset  : 't',
             end     : function() {
-                location.href = url;
+                if (url == '') {
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                } else {
+                    location.href = url;
+                }
             }
         });
     },
@@ -55,7 +60,7 @@ var dialog = {
      * @param string url 数据处理地址
      * @param string href 成功之后跳转地址
      */
-    presentForm : function(url, href) {
+    presentForm : function(url, href = '') {
         $.ajax({
             type 		: 'POST',
             url         : url,
