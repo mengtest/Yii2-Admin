@@ -264,4 +264,18 @@ class Auth extends ActiveRecord
 
         return $tree;
     }
+
+    public function authList($auth_pid = 0)
+    {
+        $tree = [];
+        $list = self::find()->where(['auth_pid' => $auth_pid])->orderBy(['auth_sort' => SORT_ASC])->asArray()->all();
+        foreach ($list as $auth) {
+            $tree[] = [
+                'auth_id' => $auth['auth_id'],
+                'auth_name' => $auth['auth_name'],
+                'child' => $this->authList($auth['auth_id'])
+            ];
+        }
+        return $tree;
+    }
 }

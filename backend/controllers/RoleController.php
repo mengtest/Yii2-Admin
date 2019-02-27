@@ -12,6 +12,8 @@
 
 namespace backend\controllers;
 
+use backend\models\Auth;
+use backend\models\Role;
 use Yii;
 use backend\models\Admin;
 use common\models\MsgUtil;
@@ -29,8 +31,33 @@ use backend\controllers\BaseController;
  */
 class RoleController extends BaseController
 {
+    /**
+     * 列表
+     *
+     * @return string
+     */
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = new Role();
+        $res = $model->index();
+        return $this->render('index', ['list' => $res['list'], 'pager' => $res['pager']]);
+    }
+
+    /**
+     * 添加
+     *
+     * @return string
+     */
+    public function actionCreate()
+    {
+        if (Yii::$app->request->isAjax) {
+            $model = new Role();
+            $post = Yii::$app->request->post();
+            $res = $model->create($post);
+            return MsgUtil::dataFormat($res);
+        }
+        $authModel = new Auth();
+        $authList = $authModel->authList();
+        return $this->render('create', ['authList' => $authList]);
     }
 }

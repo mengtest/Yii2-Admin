@@ -19,6 +19,12 @@
     <script src="/X-admin/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
     <script type="text/javascript" src="/X-admin/dialog.js"></script>
+    <style>
+        /*定制分页样式*/
+        .page .active a{background:#009688 url() 0 0 no-repeat;color:#fff;}
+        .page a{color:#000;}
+        .disabled span{color:#ccc;}
+    </style>
 </head>
 <body>
 
