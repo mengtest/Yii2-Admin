@@ -40,6 +40,8 @@ class MsgUtil
     const NAME_OR_PASS_ERROR = '用户名或者密码错误';
     const PASS_ERROR = '原密码输入错误';
     const SAVE_FAIL = '数据保存失败';
+    const UPDATE_FAIL = '数据更新失败';
+    const CHILD_ERROR = '请先删除子级权限';
 
     /**
      * 格式化AJAX返回的数据

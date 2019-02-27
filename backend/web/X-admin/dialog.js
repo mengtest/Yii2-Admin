@@ -39,6 +39,7 @@ var dialog = {
                 if (url == '') {
                     var index = parent.layer.getFrameIndex(window.name);
                     parent.layer.close(index);
+                    parent.location.reload();
                 } else {
                     location.href = url;
                 }
@@ -108,7 +109,19 @@ var dialog = {
                         if(info.code == '201') {
                             dialog.error(info.msg);
                         } else {
-                            dialog.success(info.msg, href);
+                            layer.open({
+                                content : info.msg,
+                                icon    : 1,
+                                time    : 1500,
+                                title   : '提示',
+                                btn     : [],
+                                closeBtn: 0,
+                                shade   : 0.3,
+                                offset  : 't',
+                                end     : function() {
+                                    location.reload();
+                                }
+                            });
                         }
                     }
                 });
@@ -117,4 +130,4 @@ var dialog = {
     },
 
 
-}
+};

@@ -39,4 +39,9 @@ class BaseController extends Controller
 
         return true;
     }
+
+    public function actionError($message = '')
+    {
+        return $this->render('error', ['message' => $message]);
+    }
 }

@@ -36,7 +36,9 @@ class AuthController extends BaseController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $model = new Auth;
+        $list = $model->index();
+        return $this->render("index", ['list' => $list]);
     }
 
     /**
@@ -54,5 +56,48 @@ class AuthController extends BaseController
             return MsgUtil::dataFormat($res);
         }
         return $this->render('create', ['pidList' => $pidList]);
+    }
+
+    /**
+     * 编辑
+     *
+     * @return string|\yii\web\Response
+     */
+    public function actionUpdate()
+    {
+        if (Yii::$app->request->isAjax) {
+            $model = new Auth();
+            $post = Yii::$app->request->post();
+            $res = $model->edit($post);
+            return MsgUtil::dataFormat($res);
+        }
+
+        $auth_id = Yii::$app->request->get('auth_id');
+        if (!$auth_id) {
+            return $this->redirect(['base/error']);
+        }
+        $model = Auth::findOne(['auth_id' => $auth_id]);
+        if (!$model) {
+            return $this->redirect(['base/error']);
+        }
+        $pidList = Auth::pidList($model->auth_pid);
+        return $this->render('update', ['model' => $model, 'pidList' => $pidList]);
+    }
+
+    /**
+     * 删除
+     *
+     * @return string
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
+    public function actionDel()
+    {
+        if (Yii::$app->request->isAjax) {
+            $model = new Auth();
+            $post = Yii::$app->request->post();
+            $res = $model->del($post);
+            return MsgUtil::dataFormat($res);
+        }
     }
 }
