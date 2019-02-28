@@ -14,6 +14,7 @@ namespace backend\controllers;
 
 use backend\models\Auth;
 use backend\models\Role;
+use backend\models\RoleAuthItem;
 use Yii;
 use backend\models\Admin;
 use common\models\MsgUtil;
@@ -59,5 +60,54 @@ class RoleController extends BaseController
         $authModel = new Auth();
         $authList = $authModel->authList();
         return $this->render('create', ['authList' => $authList]);
+    }
+
+    /**
+     * 编辑
+     *
+     * @return string|\yii\web\Response
+     */
+    public function actionUpdate()
+    {
+        if (Yii::$app->request->isAjax) {
+            $model = new Role();
+            $post = Yii::$app->request->post();
+            $res = $model->edit($post);
+            return MsgUtil::dataFormat($res);
+        }
+        // 角色ID
+        $role_id = Yii::$app->request->get('role_id');
+        // 检查参数
+        if (!$role_id) {
+            return $this->redirect(['base/error']);
+        }
+        $model = Role::findOne(['role_id' => $role_id]);
+        if (!$model) {
+            return $this->redirect(['base/error']);
+        }
+        $authModel = new Auth();
+        $authList = $authModel->authList();
+
+        // 角色拥有的权限
+        $itemList = RoleAuthItem::find()->where(['role_id' => $role_id])->select(['auth_id'])->asArray()->all();
+        $itemList = array_column($itemList, 'auth_id');
+        return $this->render('update', ['authList' => $authList, 'model' => $model, 'itemList' => $itemList]);
+    }
+
+    /**
+     * 删除
+     *
+     * @return string
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
+     */
+    public function actionDel()
+    {
+        if (Yii::$app->request->isAjax) {
+            $model = new Role();
+            $post = Yii::$app->request->post();
+            $res = $model->del($post);
+            return MsgUtil::dataFormat($res);
+        }
     }
 }

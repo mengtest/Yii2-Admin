@@ -265,6 +265,12 @@ class Auth extends ActiveRecord
         return $tree;
     }
 
+    /**
+     * 递归查询权限表所有数据
+     *
+     * @param int $auth_pid
+     * @return array
+     */
     public function authList($auth_pid = 0)
     {
         $tree = [];

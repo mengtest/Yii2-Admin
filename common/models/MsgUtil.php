@@ -42,6 +42,7 @@ class MsgUtil
     const SAVE_FAIL = '数据保存失败';
     const UPDATE_FAIL = '数据更新失败';
     const CHILD_ERROR = '请先删除子级权限';
+    const DEL_FAIL = '删除失败';
 
     /**
      * 格式化AJAX返回的数据

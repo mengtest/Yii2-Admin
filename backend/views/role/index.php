@@ -23,7 +23,7 @@ use yii\helpers\Url;
             <th>角色名称</th>
             <th>角色描述</th>
             <th width="50">排序</th>
-            <th>操作</th>
+            <th width="200">操作</th>
         </thead>
         <tbody>
         <?php foreach($list as $role): ?>
@@ -33,7 +33,7 @@ use yii\helpers\Url;
                 <td><?= $role->role_desc ?></td>
                 <td><input type="text" class="layui-input x-sort" name="order" value="<?= $role->role_sort ?>"></td>
                 <td class="td-manage">
-                    <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑角色', '<?= Url::to(['auth/update', 'auth_id' => $role->role_id]) ?>')" ><i class="layui-icon">&#xe642;</i>编辑</button>
+                    <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑角色', '<?= Url::to(['role/update', 'role_id' => $role->role_id]) ?>')" ><i class="layui-icon">&#xe642;</i>编辑</button>
                     <button class="layui-btn-danger layui-btn layui-btn-xs"  onclick="del(<?= $role->role_id ?>);" href="javascript:;" ><i class="layui-icon">&#xe640;</i>删除</button>
                 </td>
             </tr>
@@ -54,8 +54,8 @@ use yii\helpers\Url;
 
 </style>
 <script>
-    function del(auth_id) {
-        dialog.confirm('确定删除吗?', "<?= Url::to(['auth/del']) ?>", '', {'auth_id' : auth_id, '_csrf-backend' : '<?= Yii::$app->request->csrfToken ?>'});
+    function del(role_id) {
+        dialog.confirm('确定删除吗?', "<?= Url::to(['role/del']) ?>", '', {'role_id' : role_id, '_csrf-backend' : '<?= Yii::$app->request->csrfToken ?>'});
     }
 </script>
 

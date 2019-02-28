@@ -23,7 +23,7 @@
             <th>控制器</th>
             <th>方法</th>
             <th width="50">排序</th>
-            <th>操作</th>
+            <th width="200">操作</th>
         </thead>
         <tbody>
         <?php foreach($list as $auth): ?>
