@@ -43,6 +43,10 @@ class MsgUtil
     const UPDATE_FAIL = '数据更新失败';
     const CHILD_ERROR = '请先删除子级权限';
     const DEL_FAIL = '删除失败';
+    const PARAM_ERROR = '参数错误';
+    const ADMIN_NAME_EXIST = '用户名已存在';
+    const SELF_DEL = '不允许删除当前登录用户';
+    const ADMIN_DEL = '不允许删除admin用户';
 
     /**
      * 格式化AJAX返回的数据

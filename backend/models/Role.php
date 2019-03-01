@@ -202,4 +202,15 @@ class Role extends ActiveRecord
         // 数据格式校验失败
         return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_VALIDATE];
     }
+
+    /**
+     * 角色列表
+     *
+     * @return array|ActiveRecord[]
+     */
+    public function roleList()
+    {
+        $select = ['role_id', 'role_name'];
+        return self::find()->select($select)->orderBy(['role_sort' => SORT_ASC])->all();
+    }
 }

@@ -14,6 +14,7 @@ namespace backend\models;
 
 use common\models\MsgUtil;
 use Yii;
+use yii\data\Pagination;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
@@ -51,27 +52,20 @@ class Admin extends ActiveRecord implements IdentityInterface
             [['admin_pass'], 'string', 'max' => 64],
             [['login_ip'], 'string', 'max' => 20],
 
-            ['admin_name', 'required', 'message' => '用户名不能为空', 'on' => ['login']],
-            ['admin_pass', 'required', 'message' => '密码不能为空', 'on' => ['login', 'changePass']],
+            ['admin_name', 'required', 'message' => '用户名不能为空', 'on' => ['login', 'create', 'edit']],
+            ['admin_pass', 'required', 'message' => '密码不能为空', 'on' => ['login', 'changePass', 'create']],
             ['newPass', 'required', 'message' => '新密码不能为空', 'on' => ['changePass']],
-            ['rePass', 'required', 'message' => '确认密码不能为空', 'on' => ['changePass']],
+            ['rePass', 'required', 'message' => '确认密码不能为空', 'on' => ['changePass', 'create']],
             ['rePass', 'compare', 'compareAttribute' => 'newPass', 'message' => '两次密码输入不一致', 'on' => ['changePass']],
+            ['rePass', 'compare', 'compareAttribute' => 'admin_pass', 'message' => '两次密码输入不一致', 'on' => ['create']],
+            ['admin_id', 'required', 'message' => 'ID不能为空', 'on' => ['edit', 'del']],
+            ['role_id', 'required', 'message' => '角色不能为空', 'on' => ['create', 'edit']],
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
+    public function getRole()
     {
-        return [
-            'admin_id' => 'Admin ID',
-            'admin_name' => 'Admin Name',
-            'admin_pass' => 'Admin Pass',
-            'role_id' => 'Role ID',
-            'login_time' => 'Login Time',
-            'login_ip' => 'Login Ip',
-        ];
+        return $this->hasOne(Role::className(), ['role_id' => 'role_id']);
     }
 
     /**
@@ -129,6 +123,134 @@ class Admin extends ActiveRecord implements IdentityInterface
 
             // 用户名或密码错误
             return [MsgUtil::FAIL_CODE, MsgUtil::PASS_ERROR];
+        }
+
+        // 数据格式校验失败
+        return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_VALIDATE];
+    }
+
+    /**
+     * 列表
+     *
+     * @return array
+     */
+    public function index()
+    {
+        $model = self::find();
+        $totalCount = $model->count();
+        $pageSize = 2;
+        $pager = new Pagination(['totalCount' => $totalCount, 'pageSize' => $pageSize]);
+        // 查询的字段
+        $select = ['admin_id', 'admin_name', 'role_id', 'login_time', 'login_ip'];
+
+        $list = $model->offset($pager->offset)->limit($pager->limit)->select($select)->all();
+
+        return ['list' => $list, 'pager' => $pager];
+    }
+
+    /**
+     * 添加
+     *
+     * @param $post
+     * @return array
+     * @throws \yii\base\Exception
+     */
+    public function create($post)
+    {
+        $this->scenario = 'create';
+
+        if ($this->load($post, '') && $this->validate()) {
+            // 检查角色是否存在
+            if (!Role::findOne(['role_id' => $this->role_id])) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::PARAM_ERROR];
+            }
+
+            // 检查用户名是否存在
+            if (self::findOne(['admin_name' => $this->admin_name])) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::ADMIN_NAME_EXIST];
+            }
+
+            $model = new self();
+            $model->admin_name = $this->admin_name;
+            $model->admin_pass = Yii::$app->getSecurity()->generatePasswordHash($this->admin_pass);
+            $model->role_id = $this->role_id;
+            if ($model->save()) {
+                return [MsgUtil::SUCCESS_CODE, MsgUtil::SUCCESS_MSG];
+            }
+            return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_MSG];
+        }
+
+        return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_VALIDATE];
+    }
+
+    /**
+     * 编辑
+     *
+     * @param $post
+     * @return array
+     * @throws \yii\base\Exception
+     */
+    public function edit($post)
+    {
+        $this->scenario = 'edit';
+
+        if ($this->load($post, '') && $this->validate()) {
+            // 检查角色是否存在
+            if (!Role::findOne(['role_id' => $this->role_id])) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::PARAM_ERROR];
+            }
+
+            // 检查用户名是否存在
+            $nameExist = self::find()
+                ->where(['admin_name' => $this->admin_name])
+                ->andWhere(['<>', 'admin_id', $this->admin_id])
+                ->one();
+            if ($nameExist) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::ADMIN_NAME_EXIST];
+            }
+
+            $model = self::findOne(['admin_id' => $this->admin_id]);
+            $model->admin_name = $this->admin_name;
+            $model->role_id = $this->role_id;
+            if ($model->save()) {
+                return [MsgUtil::SUCCESS_CODE, MsgUtil::SUCCESS_MSG];
+            }
+            return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_MSG];
+        }
+
+        file_put_contents('./1.txt', print_r($this->getErrors(),  true));
+        return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_VALIDATE];
+    }
+
+    /**
+     * 删除
+     *
+     * @param $post
+     * @return array
+     * @throws \Throwable
+     */
+    public function del($post)
+    {
+        $this->scenario = 'del';
+
+        if ($this->load($post, '') && $this->validate()) {
+            // 不允许删除当前登录用户
+            if (Yii::$app->user->getId() == $this->admin_id) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::SELF_DEL];
+            }
+
+            $model = self::findOne(['admin_id' => $this->admin_id]);
+
+            // 不允许删除admin用户
+            if ($model->admin_name == 'admin') {
+                return [MsgUtil::FAIL_CODE, MsgUtil::ADMIN_DEL];
+            }
+
+            if ($model->delete()) {
+                return [MsgUtil::SUCCESS_CODE, MsgUtil::SUCCESS_MSG];
+            }
+
+            return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_MSG];
         }
 
         // 数据格式校验失败
