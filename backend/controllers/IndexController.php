@@ -49,6 +49,11 @@ class IndexController extends BaseController
         ]);
     }
 
+    /**
+     * 图标对应字体
+     *
+     * @return string
+     */
     public function actionIcon()
     {
         return $this->render('icon');

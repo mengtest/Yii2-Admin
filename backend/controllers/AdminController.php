@@ -112,6 +112,12 @@ class AdminController extends BaseController
         return $this->render('update', ['model' => $model, 'roleList' => $roleList]);
     }
 
+    /**
+     * 删除
+     *
+     * @return string
+     * @throws \Throwable
+     */
     public function actionDel()
     {
         if (Yii::$app->request->isAjax) {

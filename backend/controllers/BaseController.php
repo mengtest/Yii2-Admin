@@ -75,6 +75,12 @@ class BaseController extends Controller
         return true;
     }
 
+    /**
+     * 错误页面
+     *
+     * @param string $message
+     * @return string
+     */
     public function actionError($message = '')
     {
         return $this->render('error', ['message' => $message]);
