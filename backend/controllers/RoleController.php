@@ -16,7 +16,6 @@ use backend\models\Auth;
 use backend\models\Role;
 use backend\models\RoleAuthItem;
 use Yii;
-use backend\models\Admin;
 use common\models\MsgUtil;
 use backend\controllers\BaseController;
 

@@ -60,7 +60,7 @@ class Role extends ActiveRecord
     {
         $model = self::find();
         $totalCount = $model->count();
-        $pageSize = 2;
+        $pageSize = Yii::$app->params['pageSize']['role'];
         $pager = new Pagination(['totalCount' => $totalCount, 'pageSize' => $pageSize]);
         $list = $model->offset($pager->offset)->limit($pager->limit)->all();
 
@@ -78,6 +78,11 @@ class Role extends ActiveRecord
         $this->scenario = 'create';
 
         if ($this->load($post, '') && $this->validate()) {
+            // 检查角色名是否存在
+            if (Role::findOne(['role_name' => $this->role_name])) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::ROLE_NAME_EXIST];
+            }
+
             $transaction = Yii::$app->db->beginTransaction();
 
             try {
@@ -119,9 +124,24 @@ class Role extends ActiveRecord
 
         if ($this->load($post, '') && $this->validate()) {
             $model = self::findOne(['role_id' => $this->role_id]);
+
             if (!$model) {
                 // 数据格式校验失败
                 return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_VALIDATE];
+            }
+
+            // 超级管理员不允许编辑
+            if ($model->role_id == 1) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::ADMIN_EDIT];
+            }
+
+            // 检查角色名是否存在
+            $nameExist = self::find()
+                ->where(['role_name' => $this->role_name])
+                ->andWhere(['<>', 'role_id', $this->role_id])
+                ->one();
+            if ($nameExist) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::ROLE_NAME_EXIST];
             }
 
             $transaction = Yii::$app->db->beginTransaction();
@@ -176,6 +196,16 @@ class Role extends ActiveRecord
 
         if ($this->load($post, '') && $this->validate()) {
             $model = self::findOne(['role_id' => $this->role_id]);
+
+            // 超级管理员不允许删除
+            if ($model->role_id == 1) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::ADMIN_ROLE_DEL];
+            }
+
+            // 检查该角色下是否已绑定管理员
+            if (Admin::findOne(['role_id' => $this->role_id])) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::ROLE_RELATE_ADMIN];
+            }
 
             $transaction = Yii::$app->db->beginTransaction();
             try {

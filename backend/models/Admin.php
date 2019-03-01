@@ -138,7 +138,7 @@ class Admin extends ActiveRecord implements IdentityInterface
     {
         $model = self::find();
         $totalCount = $model->count();
-        $pageSize = 2;
+        $pageSize = Yii::$app->params['pageSize']['admin'];
         $pager = new Pagination(['totalCount' => $totalCount, 'pageSize' => $pageSize]);
         // 查询的字段
         $select = ['admin_id', 'admin_name', 'role_id', 'login_time', 'login_ip'];

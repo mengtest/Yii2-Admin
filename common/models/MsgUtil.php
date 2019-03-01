@@ -47,6 +47,11 @@ class MsgUtil
     const ADMIN_NAME_EXIST = '用户名已存在';
     const SELF_DEL = '不允许删除当前登录用户';
     const ADMIN_DEL = '不允许删除admin用户';
+    const ROLE_NAME_EXIST = '角色名已存在';
+    const ADMIN_EDIT = '超级管理员不允许编辑';
+    const ADMIN_ROLE_DEL = '超级管理员角色不允许删除';
+    const ROLE_RELATE_ADMIN = '该角色下已绑定管理员';
+
 
     /**
      * 格式化AJAX返回的数据

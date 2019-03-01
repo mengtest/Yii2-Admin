@@ -33,8 +33,13 @@ use yii\helpers\Url;
                 <td><?= $role->role_desc ?></td>
                 <td><input type="text" class="layui-input x-sort" name="order" value="<?= $role->role_sort ?>"></td>
                 <td class="td-manage">
-                    <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑角色', '<?= Url::to(['role/update', 'role_id' => $role->role_id]) ?>')" ><i class="layui-icon">&#xe642;</i>编辑</button>
-                    <button class="layui-btn-danger layui-btn layui-btn-xs"  onclick="del(<?= $role->role_id ?>);" href="javascript:;" ><i class="layui-icon">&#xe640;</i>删除</button>
+                    <?php if ($role->role_id == 1) { ?>
+                        <button class="layui-btn layui-btn-disabled layui-btn-xs"><i class="layui-icon">&#xe642;</i>编辑</button>
+                        <button class="layui-btn layui-btn-disabled layui-btn-xs" href="javascript:;" ><i class="layui-icon">&#xe640;</i>删除</button>
+                    <?php } else { ?>
+                        <button class="layui-btn layui-btn layui-btn-xs"  onclick="x_admin_show('编辑角色', '<?= Url::to(['role/update', 'role_id' => $role->role_id]) ?>')" ><i class="layui-icon">&#xe642;</i>编辑</button>
+                        <button class="layui-btn-danger layui-btn layui-btn-xs"  onclick="del(<?= $role->role_id ?>);" href="javascript:;" ><i class="layui-icon">&#xe640;</i>删除</button>
+                    <?php } ?>
                 </td>
             </tr>
         <?php endforeach; ?>

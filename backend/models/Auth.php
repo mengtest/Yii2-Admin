@@ -13,7 +13,6 @@
 namespace backend\models;
 
 use Yii;
-use yii\data\Pagination;
 use yii\db\ActiveRecord;
 use common\models\MsgUtil;
 

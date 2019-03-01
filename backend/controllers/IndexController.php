@@ -48,4 +48,9 @@ class IndexController extends BaseController
             'info' => Yii::$app->system->getInfo()
         ]);
     }
+
+    public function actionIcon()
+    {
+        return $this->render('icon');
+    }
 }

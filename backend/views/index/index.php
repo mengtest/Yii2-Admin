@@ -71,7 +71,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="unicode.html">
+                        <a _href="<?= Url::to(['index/icon']) ?>">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>图标对应字体</cite>
                         </a>
