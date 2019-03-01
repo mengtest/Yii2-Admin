@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bfdfed1-830a-4bc5-ad53-1da80f23dd40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/doc/yii2-admin-role.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/controllers/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/controllers/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/models/MsgUtil.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/MsgUtil.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +29,7 @@
           <entry key="gitignore" value="2" />
           <entry key="ico" value="1" />
           <entry key="js" value="14" />
-          <entry key="md" value="8" />
+          <entry key="md" value="9" />
           <entry key="php" value="237" />
           <entry key="ts" value="1" />
           <entry key="txt" value="41" />
@@ -43,7 +40,7 @@
           <entry key="CSS" value="1" />
           <entry key="Image" value="1" />
           <entry key="JavaScript" value="14" />
-          <entry key="Markdown" value="8" />
+          <entry key="Markdown" value="9" />
           <entry key="PHP" value="237" />
           <entry key="PLAIN_TEXT" value="43" />
           <entry key="TypeScript" value="1" />
@@ -52,7 +49,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="js" value="288" />
-          <entry key="md" value="61" />
+          <entry key="md" value="75" />
           <entry key="php" value="18560" />
         </counts>
       </usages-collector>
@@ -60,7 +57,7 @@
         <counts>
           <entry key="HTML" value="2" />
           <entry key="JavaScript" value="288" />
-          <entry key="Markdown" value="61" />
+          <entry key="Markdown" value="75" />
           <entry key="PHP" value="18558" />
         </counts>
       </usages-collector>
@@ -78,7 +75,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="69">
-                <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+                <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
               </first_editor>
               <second_editor />
             </state>
@@ -250,7 +247,7 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="226" />
     <option name="y" value="30" />
     <option name="width" value="1624" />
@@ -320,12 +317,12 @@
       <option name="presentableId" value="Default" />
       <updated>1550983447993</updated>
       <workItem from="1550983449168" duration="24668000" />
-      <workItem from="1551104935523" duration="67485000" />
+      <workItem from="1551104935523" duration="67754000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92153000" />
+    <option name="totallyTimeSpent" value="92422000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -899,7 +896,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="69">
-            <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+            <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
           </first_editor>
           <second_editor />
         </state>
