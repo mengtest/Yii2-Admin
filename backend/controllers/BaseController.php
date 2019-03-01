@@ -12,6 +12,12 @@
 
 namespace backend\controllers;
 
+use backend\models\Admin;
+use backend\models\Auth;
+use backend\models\Role;
+use backend\models\RoleAuthItem;
+use common\models\MsgUtil;
+use Yii;
 use yii\web\Controller;
 
 /**
@@ -32,9 +38,38 @@ class BaseController extends Controller
             return false;
         }
 
-        if (\Yii::$app->user->isGuest) {
+        if (Yii::$app->user->isGuest) {
             $this->redirect(['login/login']);
             return false;
+        }
+
+        // 控制器
+        $controller = $action->controller->id;
+        // 方法
+        $method = $action->id;
+
+        // 默认允许访问的控制器/方法
+        $allow = ['index/index', 'index/welcome'];
+
+        $adminModel = Admin::findOne(['admin_id' => Yii::$app->user->getId()]);
+        $roleModel = Role::findOne(['role_id' => $adminModel->role_id]);
+
+        // 超级管理员不用检查权限
+        if ($roleModel->role_id != 1 && !in_array($controller . '/' . $method, $allow)) {
+            $authModel = Auth::findOne(['auth_controller' => $controller, 'auth_action' => $method]);
+            $itemModel = RoleAuthItem::findOne(['role_id' => $roleModel->role_id, 'auth_id' => $authModel->auth_id]);
+            if (!$itemModel) {
+                // Ajax
+                if (Yii::$app->request->isAjax) {
+                    Yii::$app->response->data = MsgUtil::dataFormat([MsgUtil::FAIL_CODE, MsgUtil::HAVE_NO_AUTH]);
+                    return false;
+                }
+                // 非Ajax
+                else {
+                    echo '<center><div style="color:#FF5722;margin-top:100px;">没有权限</div></center>';
+                    return false;
+                }
+            }
         }
 
         return true;

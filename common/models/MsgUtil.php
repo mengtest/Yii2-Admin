@@ -51,6 +51,7 @@ class MsgUtil
     const ADMIN_EDIT = '超级管理员不允许编辑';
     const ADMIN_ROLE_DEL = '超级管理员角色不允许删除';
     const ROLE_RELATE_ADMIN = '该角色下已绑定管理员';
+    const HAVE_NO_AUTH = '没有权限';
 
 
     /**
