@@ -14,6 +14,13 @@
             <div class="layui-form-mid layui-word-aux">必填</div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-inline">
+                <input type="text" name="admin_email" lay-verify="required|email" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">必填</div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">
                 角色
             </label>

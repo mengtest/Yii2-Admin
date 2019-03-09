@@ -59,12 +59,12 @@ class BaseController extends Controller
             $authModel = Auth::findOne(['auth_controller' => $controller, 'auth_action' => $method]);
             $itemModel = RoleAuthItem::findOne(['role_id' => $roleModel->role_id, 'auth_id' => $authModel->auth_id]);
             if (!$itemModel) {
-                // Ajax
+                // Ajax请求
                 if (Yii::$app->request->isAjax) {
                     Yii::$app->response->data = MsgUtil::dataFormat([MsgUtil::FAIL_CODE, MsgUtil::HAVE_NO_AUTH]);
                     return false;
                 }
-                // 非Ajax
+                // 非Ajax请求
                 else {
                     echo '<center><div style="color:#FF5722;margin-top:100px;">没有权限</div></center>';
                     return false;

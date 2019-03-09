@@ -21,6 +21,7 @@
         <li class="layui-nav-item">
             <a href="javascript:;"><?= Yii::$app->user->identity->admin_name ?></a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
+                <dd><a onclick="x_admin_show('修改信息','<?= Url::to(['admin/change-info']) ?>', 600, 400)">修改信息</a></dd>
                 <dd><a onclick="x_admin_show('修改密码','<?= Url::to(['admin/change-pass']) ?>', 600, 400)">修改密码</a></dd>
                 <dd><a href="javascript:;" onclick="logout()">退出</a></dd>
             </dl>

@@ -48,6 +48,23 @@ class AdminController extends BaseController
     }
 
     /**
+     * 修改信息
+     *
+     * @return string
+     */
+    public function actionChangeInfo()
+    {
+        if (Yii::$app->request->isAjax) {
+            $model = new Admin();
+            $post = Yii::$app->request->post();
+            $res = $model->changeInfo($post);
+            return MsgUtil::dataFormat($res);
+        }
+        $model = Admin::find()->where(['admin_id' => Yii::$app->user->identity->getId()])->select(['admin_email'])->one();
+        return $this->render('change-info', ['model' => $model]);
+    }
+
+    /**
      * 列表
      *
      * @return string
@@ -107,7 +124,7 @@ class AdminController extends BaseController
         // 角色列表
         $roleList = $roleModel->roleList();
 
-        $model = Admin::find()->where(['admin_id' => $admin_id])->select(['admin_id', 'admin_name', 'role_id'])->one();
+        $model = Admin::find()->where(['admin_id' => $admin_id])->select(['admin_id', 'admin_name', 'admin_email', 'role_id'])->one();
 
         return $this->render('update', ['model' => $model, 'roleList' => $roleList]);
     }

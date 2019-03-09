@@ -24,6 +24,7 @@ use yii\web\IdentityInterface;
  * @property string $admin_id 用户ID
  * @property string $admin_name 用户名
  * @property string $admin_pass 密码
+ * @property string $admin_email 邮箱
  * @property string $role_id 角色ID
  * @property int $login_time 登录时间
  * @property string $login_ip 最近一次登录IP
@@ -49,11 +50,12 @@ class Admin extends ActiveRecord implements IdentityInterface
         return [
             [['role_id', 'login_time'], 'integer'],
             [['admin_name'], 'string', 'max' => 32],
-            [['admin_pass'], 'string', 'max' => 64],
+            [['admin_pass', 'admin_email'], 'string', 'max' => 64],
             [['login_ip'], 'string', 'max' => 20],
 
             ['admin_name', 'required', 'message' => '用户名不能为空', 'on' => ['login', 'create', 'edit']],
             ['admin_pass', 'required', 'message' => '密码不能为空', 'on' => ['login', 'changePass', 'create']],
+            ['admin_email', 'required', 'message' => '邮箱不能为空', 'on' => ['create', 'edit', 'changeInfo']],
             ['newPass', 'required', 'message' => '新密码不能为空', 'on' => ['changePass']],
             ['rePass', 'required', 'message' => '确认密码不能为空', 'on' => ['changePass', 'create']],
             ['rePass', 'compare', 'compareAttribute' => 'newPass', 'message' => '两次密码输入不一致', 'on' => ['changePass']],
@@ -130,6 +132,30 @@ class Admin extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * 修改信息
+     *
+     * @param $post
+     * @return array
+     */
+    public function changeInfo($post)
+    {
+        $this->scenario = 'changeInfo';
+
+        if ($this->load($post, '') && $this->validate()) {
+            $where = ['admin_id' => Yii::$app->user->identity->getId()];
+            $model = self::findOne($where);
+            $model->admin_email = $this->admin_email;
+            if ($model->save()) {
+                return [MsgUtil::SUCCESS_CODE, MsgUtil::SUCCESS_MSG];
+            }
+            return [MsgUtil::FAIL_CODE, MsgUtil::SAVE_FAIL];
+        }
+
+        // 数据格式校验失败
+        return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_VALIDATE];
+    }
+
+    /**
      * 列表
      *
      * @return array
@@ -141,7 +167,7 @@ class Admin extends ActiveRecord implements IdentityInterface
         $pageSize = Yii::$app->params['pageSize']['admin'];
         $pager = new Pagination(['totalCount' => $totalCount, 'pageSize' => $pageSize]);
         // 查询的字段
-        $select = ['admin_id', 'admin_name', 'role_id', 'login_time', 'login_ip'];
+        $select = ['admin_id', 'admin_name', 'admin_email', 'role_id', 'login_time', 'login_ip'];
 
         $list = $model->offset($pager->offset)->limit($pager->limit)->select($select)->all();
 
@@ -173,6 +199,7 @@ class Admin extends ActiveRecord implements IdentityInterface
             $model = new self();
             $model->admin_name = $this->admin_name;
             $model->admin_pass = Yii::$app->getSecurity()->generatePasswordHash($this->admin_pass);
+            $model->admin_email = $this->admin_email;
             $model->role_id = $this->role_id;
             if ($model->save()) {
                 return [MsgUtil::SUCCESS_CODE, MsgUtil::SUCCESS_MSG];
@@ -211,6 +238,7 @@ class Admin extends ActiveRecord implements IdentityInterface
 
             $model = self::findOne(['admin_id' => $this->admin_id]);
             $model->admin_name = $this->admin_name;
+            $model->admin_email = $this->admin_email;
             $model->role_id = $this->role_id;
             if ($model->save()) {
                 return [MsgUtil::SUCCESS_CODE, MsgUtil::SUCCESS_MSG];
@@ -218,7 +246,6 @@ class Admin extends ActiveRecord implements IdentityInterface
             return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_MSG];
         }
 
-        file_put_contents('./1.txt', print_r($this->getErrors(),  true));
         return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_VALIDATE];
     }
 

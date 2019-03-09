@@ -21,6 +21,7 @@ use yii\helpers\Url;
         <tr>
             <th width="50">ID</th>
             <th>用户名</th>
+            <th>邮箱</th>
             <th>角色</th>
             <th width="200">最近一次登录IP</th>
             <th width="200">最近一次登录时间</th>
@@ -31,6 +32,7 @@ use yii\helpers\Url;
             <tr>
                 <td><?= $admin->admin_id ?></td>
                 <td><?= $admin->admin_name ?></td>
+                <td><?= $admin->admin_email ?></td>
                 <td><?= $admin->role->role_name ?></td>
                 <td><?= $admin->login_ip ?></td>
                 <td><?= date('Y-m-d H:i:s', $admin->login_time) ?></td>
