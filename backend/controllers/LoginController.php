@@ -55,4 +55,37 @@ class LoginController extends Controller
         Yii::$app->user->logout(false);
         return MsgUtil::dataFormat([MsgUtil::SUCCESS_CODE, MsgUtil::SUCCESS_MSG]);
     }
+
+    /**
+     * 忘记密码
+     *
+     * @return string
+     */
+    public function actionForgetPass()
+    {
+        if (Yii::$app->request->isAjax) {
+            $model = new Admin();
+            $post = Yii::$app->request->post();
+            $res = $model->forgetPass($post);
+            return MsgUtil::dataFormat($res);
+        }
+        return $this->render('forget-pass');
+    }
+
+    /**
+     * 重置密码
+     *
+     * @return string
+     * @throws \yii\base\Exception
+     */
+    public function actionResetPass()
+    {
+        if (Yii::$app->request->isAjax) {
+            $model = new Admin();
+            $post = Yii::$app->request->post();
+            $res = $model->resetPass($post);
+            return MsgUtil::dataFormat($res);
+        }
+        return $this->render('reset-pass');
+    }
 }

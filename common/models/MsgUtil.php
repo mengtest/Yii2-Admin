@@ -52,6 +52,10 @@ class MsgUtil
     const ADMIN_ROLE_DEL = '超级管理员角色不允许删除';
     const ROLE_RELATE_ADMIN = '该角色下已绑定管理员';
     const HAVE_NO_AUTH = '没有权限';
+    const NAME_OR_EMAIL_ERROR = '用户名或邮箱输入错误';
+    const MAIL_SEND_SUCCESS = '邮件发送成功, 请去邮箱进行验证';
+    const TOKEN_ERROR = 'Token验证失败';
+    const LINK_EXPIRE = '链接已经过期';
 
 
     /**

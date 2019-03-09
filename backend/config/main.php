@@ -49,6 +49,9 @@ return [
         'system' => [
             'class' => 'backend\components\SystemInfo',
         ],
+        'token' => [
+            'class' => 'backend\components\Token',
+        ],
     ],
     'params' => $params,
 ];

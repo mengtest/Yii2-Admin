@@ -1,9 +1,9 @@
 <?php
-    use yii\helpers\Url;
+use yii\helpers\Url;
 ?>
 <body class="login-bg">
 <div class="login layui-anim layui-anim-up">
-    <div class="message">Yii2-Admin 管理后台</div>
+    <div class="message">Yii2-Admin 忘记密码</div>
     <div id="darkbannerwrap"></div>
 
     <form class="layui-form" id="dataSet" onsubmit="return present();">
@@ -11,13 +11,13 @@
 
         <input name="admin_name" placeholder="用户名"  type="text" class="layui-input" >
         <hr class="hr15">
-        <input name="admin_pass" placeholder="密码"  type="password" class="layui-input">
+        <input name="admin_email" placeholder="邮箱"  type="text" class="layui-input">
         <hr class="hr15">
-        <input value="登录" style="width:100%;" type="submit">
+        <input value="提交" style="width:100%;" type="submit">
         <hr class="hr20" >
     </form>
 
-    <a href="<?= Url::to(['login/forget-pass']) ?>" class='x-a'>忘记密码</a>
+    <a href="<?= Url::to(['login/login']) ?>" class='x-a'>登录</a>
 </div>
 
 <script>
@@ -27,7 +27,7 @@
      * @returns {boolean}
      */
     function present() {
-        dialog.presentForm('<?= Url::to(['login/login']) ?>', '<?= Url::to(['index/index']) ?>');
+        dialog.presentForm('<?= Url::to(['login/forget-pass']) ?>', '<?= Url::to(['login/login']) ?>');
         return false;
     }
 </script>

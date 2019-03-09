@@ -33,6 +33,8 @@ class Admin extends ActiveRecord implements IdentityInterface
 {
     public $newPass;
     public $rePass;
+    public $time;
+    public $token;
 
     /**
      * {@inheritdoc}
@@ -53,21 +55,93 @@ class Admin extends ActiveRecord implements IdentityInterface
             [['admin_pass', 'admin_email'], 'string', 'max' => 64],
             [['login_ip'], 'string', 'max' => 20],
 
-            ['admin_name', 'required', 'message' => '用户名不能为空', 'on' => ['login', 'create', 'edit']],
+            ['admin_name', 'required', 'message' => '用户名不能为空', 'on' => ['login', 'create', 'edit', 'forgetPass', 'resetPass']],
             ['admin_pass', 'required', 'message' => '密码不能为空', 'on' => ['login', 'changePass', 'create']],
-            ['admin_email', 'required', 'message' => '邮箱不能为空', 'on' => ['create', 'edit', 'changeInfo']],
-            ['newPass', 'required', 'message' => '新密码不能为空', 'on' => ['changePass']],
-            ['rePass', 'required', 'message' => '确认密码不能为空', 'on' => ['changePass', 'create']],
-            ['rePass', 'compare', 'compareAttribute' => 'newPass', 'message' => '两次密码输入不一致', 'on' => ['changePass']],
+            ['admin_email', 'required', 'message' => '邮箱不能为空', 'on' => ['create', 'edit', 'changeInfo', 'forgetPass']],
+            ['newPass', 'required', 'message' => '新密码不能为空', 'on' => ['changePass', 'resetPass']],
+            ['rePass', 'required', 'message' => '确认密码不能为空', 'on' => ['changePass', 'create', 'resetPass']],
+            ['rePass', 'compare', 'compareAttribute' => 'newPass', 'message' => '两次密码输入不一致', 'on' => ['changePass', 'resetPass']],
             ['rePass', 'compare', 'compareAttribute' => 'admin_pass', 'message' => '两次密码输入不一致', 'on' => ['create']],
             ['admin_id', 'required', 'message' => 'ID不能为空', 'on' => ['edit', 'del']],
             ['role_id', 'required', 'message' => '角色不能为空', 'on' => ['create', 'edit']],
+            ['time', 'required', 'message' => '时间戳不能为空', 'on' => ['resetPass']],
+            ['token', 'required', 'message' => 'Token不能为空', 'on' => ['resetPass']],
         ];
     }
 
     public function getRole()
     {
         return $this->hasOne(Role::className(), ['role_id' => 'role_id']);
+    }
+
+    /**
+     * 忘记密码
+     *
+     * @param $post
+     * @return array|bool
+     */
+    public function forgetPass($post)
+    {
+        $this->scenario = 'forgetPass';
+
+        if ($this->load($post, '') && $this->validate()) {
+            // 检查用户名和邮箱是否匹配
+            $model = self::findOne(['admin_name' => $this->admin_name, 'admin_email' => $this->admin_email]);
+            if (!$model) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::NAME_OR_EMAIL_ERROR];
+            }
+
+            // 时间戳
+            $time = time();
+            // token
+            $token = Yii::$app->token->generateToken($this->admin_name, $time);
+
+            $mailer = Yii::$app->mailer->compose('forget-pass', ['admin_name' => $this->admin_name, 'time' => $time, 'token' => $token]);
+            $mailer->setTo($this->admin_email);
+            $mailer->setSubject("Yii2-Admin 找回密码");
+            if ($mailer->send()) {
+                return [MsgUtil::SUCCESS_CODE, MsgUtil::MAIL_SEND_SUCCESS];
+            }
+            return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_MSG];
+        }
+
+        // 数据格式校验失败
+        return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_VALIDATE];
+    }
+
+    /**
+     * 重置密码
+     *
+     * @param $post
+     * @return array
+     * @throws \yii\base\Exception
+     */
+    public function resetPass($post)
+    {
+        $this->scenario = 'resetPass';
+
+        if ($this->load($post, '') && $this->validate()) {
+            // Token验证
+            if (Yii::$app->token->generateToken($this->admin_name, $this->time) != $this->token) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::TOKEN_ERROR];
+            }
+
+            // 重置密码链接10分钟后过期
+            if (time() - $this->time > 60 * 10) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::LINK_EXPIRE];
+            }
+
+            $model = self::findOne(['admin_name' => $this->admin_name]);
+            $model->admin_pass = Yii::$app->getSecurity()->generatePasswordHash($this->newPass);
+            if ($model->save()) {
+                return [MsgUtil::SUCCESS_CODE, MsgUtil::SUCCESS_MSG];
+            }
+
+            return [MsgUtil::FAIL_CODE, MsgUtil::SAVE_FAIL];
+        }
+
+        // 数据格式校验失败
+        return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_VALIDATE];
     }
 
     /**

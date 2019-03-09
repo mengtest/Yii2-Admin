@@ -49,7 +49,7 @@ class BaseController extends Controller
         $method = $action->id;
 
         // 默认允许访问的控制器/方法
-        $allow = ['index/index', 'index/welcome'];
+        $allow = ['index/index', 'index/welcome', 'admin/change-pass', 'admin/change-info'];
 
         $adminModel = Admin::findOne(['admin_id' => Yii::$app->user->getId()]);
         $roleModel = Role::findOne(['role_id' => $adminModel->role_id]);
