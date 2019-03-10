@@ -10,7 +10,7 @@
  * @link      https://github.com/duiying/Yii2-Admin
  */
 
-namespace backend\components;
+namespace common\components;
 
 use Yii;
 use yii\base\Component;
@@ -36,6 +36,7 @@ class Token extends Component
      */
     public function generateToken($admin_name, $time)
     {
-        return md5(md5($admin_name) . base64_encode(Yii::$app->request->userIP) . md5($time));
+        //return md5(md5($admin_name) . base64_encode(Yii::$app->request->userIP) . md5($time));
+        return md5(md5($admin_name) . base64_encode('127.0.0.1') . md5($time));
     }
 }
