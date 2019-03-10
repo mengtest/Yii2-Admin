@@ -32,4 +32,15 @@ class MailController extends Controller
     {
         MailerQueue::send();
     }
+
+    public function actionRedis()
+    {
+        $redis = Yii::$app->redis;
+        if (empty($redis)) {
+            echo 'empty';
+        }
+
+        $redis->set('key22', 'val22');
+        echo 'ok';
+    }
 }
