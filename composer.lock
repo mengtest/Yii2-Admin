@@ -239,12 +239,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/duiying/yii2-queue.git",
-                "reference": "e1ecc2dec0e545aa4eee5e9d0b865d74f364f17d"
+                "reference": "b5f4e54bd4235256361f8cead14a55a5128e587e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/duiying/yii2-queue/zipball/e1ecc2dec0e545aa4eee5e9d0b865d74f364f17d",
-                "reference": "e1ecc2dec0e545aa4eee5e9d0b865d74f364f17d",
+                "url": "https://api.github.com/repos/duiying/yii2-queue/zipball/b5f4e54bd4235256361f8cead14a55a5128e587e",
+                "reference": "b5f4e54bd4235256361f8cead14a55a5128e587e",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -280,7 +280,7 @@
                 "redis",
                 "yii2"
             ],
-            "time": "2019-03-11T06:53:56+00:00"
+            "time": "2019-03-11T07:35:12+00:00"
         },
         {
             "name": "egulias/email-validator",
