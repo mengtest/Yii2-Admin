@@ -13,6 +13,7 @@
 namespace backend\models;
 
 use common\models\MsgUtil;
+use duiying\queue\MailerQueue;
 use Yii;
 use yii\data\Pagination;
 use yii\db\ActiveRecord;
@@ -75,11 +76,12 @@ class Admin extends ActiveRecord implements IdentityInterface
     }
 
     /**
-     * 忘记密码
+     * 忘记密码(同步发送邮件, 弃用)
      *
      * @param $post
      * @return array|bool
      */
+    /*
     public function forgetPass($post)
     {
         $this->scenario = 'forgetPass';
@@ -103,6 +105,54 @@ class Admin extends ActiveRecord implements IdentityInterface
                 return [MsgUtil::SUCCESS_CODE, MsgUtil::MAIL_SEND_SUCCESS];
             }
             return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_MSG];
+        }
+
+        // 数据格式校验失败
+        return [MsgUtil::FAIL_CODE, MsgUtil::FAIL_VALIDATE];
+    }
+    */
+
+    /**
+     * 忘记密码
+     *
+     * @param $post
+     * @return array|bool
+     */
+    public function forgetPass($post)
+    {
+        $this->scenario = 'forgetPass';
+
+        if ($this->load($post, '') && $this->validate()) {
+            // 检查用户名和邮箱是否匹配
+            $model = self::findOne(['admin_name' => $this->admin_name, 'admin_email' => $this->admin_email]);
+            if (!$model) {
+                return [MsgUtil::FAIL_CODE, MsgUtil::NAME_OR_EMAIL_ERROR];
+            }
+
+            // 时间戳
+            $time = time();
+            // token
+            $token = Yii::$app->token->generateToken($this->admin_name, $time);
+            // 邮件主题
+            $subject = 'Yii2-Admin 找回密码';
+            // 邮件收件人
+            $toUser = $this->admin_email;
+
+            $mail = [
+                'template' => 'forget-pass',
+                'templateData' => [
+                    'admin_name' => $this->admin_name,
+                    'url' => 'http://admin.yii2.com/index.php?r=login/reset-pass&time='. $time .'&admin_name='. $this->admin_name .'&token='. $token
+                ],
+                'mailData' => [
+                    'subject' => $subject,
+                    'toUser' => $toUser
+                ]
+            ];
+
+            // 向List尾部添加元素
+            Yii::$app->redis->rpush(MailerQueue::KEY, json_encode($mail));
+            return [MsgUtil::SUCCESS_CODE, MsgUtil::MAIL_SEND_SUCCESS];
         }
 
         // 数据格式校验失败
