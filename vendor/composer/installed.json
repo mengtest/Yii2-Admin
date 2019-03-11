@@ -630,17 +630,17 @@
     },
     {
         "name": "duiying/yii2-queue",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
+        "version": "1.0.0",
+        "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/duiying/yii2-queue.git",
-            "reference": "338f83538db50d9a37ff58e58aee5ed02bff9152"
+            "reference": "e1ecc2dec0e545aa4eee5e9d0b865d74f364f17d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/duiying/yii2-queue/zipball/338f83538db50d9a37ff58e58aee5ed02bff9152",
-            "reference": "338f83538db50d9a37ff58e58aee5ed02bff9152",
+            "url": "https://api.github.com/repos/duiying/yii2-queue/zipball/e1ecc2dec0e545aa4eee5e9d0b865d74f364f17d",
+            "reference": "e1ecc2dec0e545aa4eee5e9d0b865d74f364f17d",
             "shasum": "",
             "mirrors": [
                 {
@@ -653,9 +653,9 @@
             "yiisoft/yii2": "*",
             "yiisoft/yii2-redis": "~2.0.0"
         },
-        "time": "2019-03-09T11:57:45+00:00",
+        "time": "2019-03-11T06:53:56+00:00",
         "type": "yii2-extension",
-        "installation-source": "source",
+        "installation-source": "dist",
         "autoload": {
             "psr-4": {
                 "duiying\\queue\\": "src"

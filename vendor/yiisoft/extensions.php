@@ -60,7 +60,7 @@ return array (
   'duiying/yii2-queue' => 
   array (
     'name' => 'duiying/yii2-queue',
-    'version' => '9999999-dev',
+    'version' => '1.0.0.0',
     'alias' => 
     array (
       '@duiying/queue' => $vendorDir . '/duiying/yii2-queue/src',

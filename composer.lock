@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5c7c8050821497bdf828e67ce3744fb",
+    "content-hash": "472464f017b26098d9bad89361566bd0",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -235,16 +235,16 @@
         },
         {
             "name": "duiying/yii2-queue",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/duiying/yii2-queue.git",
-                "reference": "338f83538db50d9a37ff58e58aee5ed02bff9152"
+                "reference": "e1ecc2dec0e545aa4eee5e9d0b865d74f364f17d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/duiying/yii2-queue/zipball/338f83538db50d9a37ff58e58aee5ed02bff9152",
-                "reference": "338f83538db50d9a37ff58e58aee5ed02bff9152",
+                "url": "https://api.github.com/repos/duiying/yii2-queue/zipball/e1ecc2dec0e545aa4eee5e9d0b865d74f364f17d",
+                "reference": "e1ecc2dec0e545aa4eee5e9d0b865d74f364f17d",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -280,7 +280,7 @@
                 "redis",
                 "yii2"
             ],
-            "time": "2019-03-09T11:57:45+00:00"
+            "time": "2019-03-11T06:53:56+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -3886,9 +3886,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "duiying/yii2-queue": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
