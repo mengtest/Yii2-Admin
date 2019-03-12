@@ -62,7 +62,7 @@ class Role extends ActiveRecord
         $totalCount = $model->count();
         $pageSize = Yii::$app->params['pageSize']['role'];
         $pager = new Pagination(['totalCount' => $totalCount, 'pageSize' => $pageSize]);
-        $list = $model->offset($pager->offset)->limit($pager->limit)->all();
+        $list = $model->offset($pager->offset)->limit($pager->limit)->orderBy(['role_sort' => SORT_ASC])->all();
 
         return ['list' => $list, 'pager' => $pager];
     }
