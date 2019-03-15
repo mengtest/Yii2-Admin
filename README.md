@@ -26,6 +26,9 @@
 游客 账号 youke 密码 123
 ```
 
+### Github开源项目交流群
+[点击加群](https://jq.qq.com/?_wv=1027&k=55by69J)
+
  
 
 

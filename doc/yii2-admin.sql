@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-03-15 12:55:32
+Date: 2019-03-15 13:46:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,8 +33,8 @@ CREATE TABLE `admin` (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES ('1', 'admin', '$2y$13$c7B970djkM5VdKvupOeqjezuxVnKSBR/xmUBfzxvYdqSugGjnOely', '1822581649@qq.com', '1', '1552625282', '127.0.0.1');
-INSERT INTO `admin` VALUES ('4', 'youke', '$2y$13$W3l.1dVz1cfDo2lBpdbOPeX7aCBor3WUmz7yxhHCA2L7nRq0ruS9m', '3157392850@qq.com', '9', '1552625332', '127.0.0.1');
+INSERT INTO `admin` VALUES ('1', 'admin', '$2y$13$c7B970djkM5VdKvupOeqjezuxVnKSBR/xmUBfzxvYdqSugGjnOely', '1822581649@qq.com', '1', '1552628715', '127.0.0.1');
+INSERT INTO `admin` VALUES ('4', 'youke', '$2y$13$W3l.1dVz1cfDo2lBpdbOPeX7aCBor3WUmz7yxhHCA2L7nRq0ruS9m', '3157392850@qq.com', '9', '1552628747', '127.0.0.1');
 
 -- ----------------------------
 -- Table structure for auth
@@ -96,17 +96,16 @@ CREATE TABLE `role_auth_item` (
   `role_id` int(11) unsigned NOT NULL COMMENT '角色ID',
   `auth_id` int(11) unsigned NOT NULL COMMENT '权限ID',
   PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=utf8 COMMENT='角色权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8 COMMENT='角色权限表';
 
 -- ----------------------------
 -- Records of role_auth_item
 -- ----------------------------
 INSERT INTO `role_auth_item` VALUES ('39', '8', '1');
 INSERT INTO `role_auth_item` VALUES ('40', '8', '2');
-INSERT INTO `role_auth_item` VALUES ('139', '9', '1');
-INSERT INTO `role_auth_item` VALUES ('140', '9', '5');
-INSERT INTO `role_auth_item` VALUES ('141', '9', '11');
-INSERT INTO `role_auth_item` VALUES ('142', '9', '13');
-INSERT INTO `role_auth_item` VALUES ('143', '9', '3');
-INSERT INTO `role_auth_item` VALUES ('144', '9', '2');
-INSERT INTO `role_auth_item` VALUES ('145', '9', '7');
+INSERT INTO `role_auth_item` VALUES ('146', '9', '1');
+INSERT INTO `role_auth_item` VALUES ('147', '9', '5');
+INSERT INTO `role_auth_item` VALUES ('148', '9', '11');
+INSERT INTO `role_auth_item` VALUES ('149', '9', '3');
+INSERT INTO `role_auth_item` VALUES ('150', '9', '2');
+INSERT INTO `role_auth_item` VALUES ('151', '9', '7');
