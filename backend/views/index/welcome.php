@@ -12,44 +12,16 @@
                                 <ul class="layui-row layui-col-space10 layui-this">
                                     <li class="layui-col-xs2">
                                         <a href="javascript:;" class="x-admin-backlog-body">
-                                            <h3>文章数</h3>
+                                            <h3>管理员数</h3>
                                             <p>
-                                                <cite>66</cite></p>
+                                                <cite>2</cite></p>
                                         </a>
                                     </li>
                                     <li class="layui-col-xs2">
                                         <a href="javascript:;" class="x-admin-backlog-body">
-                                            <h3>会员数</h3>
+                                            <h3>访问IP数</h3>
                                             <p>
                                                 <cite>12</cite></p>
-                                        </a>
-                                    </li>
-                                    <li class="layui-col-xs2">
-                                        <a href="javascript:;" class="x-admin-backlog-body">
-                                            <h3>回复数</h3>
-                                            <p>
-                                                <cite>99</cite></p>
-                                        </a>
-                                    </li>
-                                    <li class="layui-col-xs2">
-                                        <a href="javascript:;" class="x-admin-backlog-body">
-                                            <h3>商品数</h3>
-                                            <p>
-                                                <cite>67</cite></p>
-                                        </a>
-                                    </li>
-                                    <li class="layui-col-xs2">
-                                        <a href="javascript:;" class="x-admin-backlog-body">
-                                            <h3>文章数</h3>
-                                            <p>
-                                                <cite>67</cite></p>
-                                        </a>
-                                    </li>
-                                    <li class="layui-col-xs2">
-                                        <a href="javascript:;" class="x-admin-backlog-body">
-                                            <h3>文章数</h3>
-                                            <p>
-                                                <cite>6766</cite></p>
                                         </a>
                                     </li>
                                 </ul>
@@ -67,7 +39,7 @@
                 <tbody>
                 <tr>
                     <td >
-                        <a class="x-a" href="/" target="_blank">新版x-admin 2.0上线了</a>
+                        <a class="x-a" href="/" target="_blank">RBAC权限控制</a>
                     </td>
                 </tr>
                 <tr>
@@ -133,5 +105,5 @@
             </table>
         </div>
     </fieldset>
-    <blockquote class="layui-elem-quote layui-quote-nm">感谢layui,百度Echarts,jquery,本系统由x-admin提供技术支持。</blockquote>
+    <blockquote class="layui-elem-quote layui-quote-nm"><a href="http://github.com/duiying/Yii2-Admin" class='x-a' target="_blank">Yii2-Admin</a></blockquote>
 </div>

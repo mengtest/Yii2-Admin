@@ -36,49 +36,25 @@
 <div class="left-nav">
     <div id="side-nav">
         <ul id="nav">
+            <?php foreach ($menu as $auth): ?>
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
-                    <cite>权限管理</cite>
+                    <cite><?= $auth['auth_name'] ?></cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
+                    <?php foreach ($auth['child'] as $childAuth): ?>
                     <li>
-                        <a _href="<?= Url::to(['admin/index']) ?>">
+                        <a _href="<?= Url::to([$childAuth['auth_controller'] . '/' . $childAuth['auth_action']]) ?>">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>管理员管理</cite>
+                            <cite><?= $childAuth['auth_name'] ?></cite>
                         </a>
                     </li >
-                    <li>
-                        <a _href="<?= Url::to(['role/index']) ?>">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>角色管理</cite>
-                        </a>
-                    </li >
-                    <li>
-                        <a _href="<?= Url::to(['auth/index']) ?>">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限管理</cite>
-                        </a>
-                    </li >
+                    <?php endforeach; ?>
                 </ul>
             </li>
-
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe6b4;</i>
-                    <cite>图标字体</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="<?= Url::to(['index/icon']) ?>">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>图标对应字体</cite>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            <?php endforeach; ?>
         </ul>
     </div>
 </div>
@@ -102,7 +78,7 @@
 <!-- 中部结束 -->
 <!-- 底部开始 -->
 <div class="footer">
-    <div class="copyright">Copyright ©2019 github.com/duiying All Rights Reserved</div>
+    <div class="copyright">Copyright ©2019 <a href="http://github.com/duiying/Yii2-Admin" class='x-a' target="_blank">Yii2-Admin</a> All Rights Reserved</div>
 </div>
 <!-- 底部结束 -->
 

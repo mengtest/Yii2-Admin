@@ -132,6 +132,47 @@ class Auth extends ActiveRecord
     }
 
     /**
+     * 首页菜单
+     *
+     * @return array|ActiveRecord[]
+     */
+    public static function getMenu()
+    {
+        $adminModel = Admin::findOne(['admin_id' => Yii::$app->user->getId()]);
+        $authList = RoleAuthItem::find()->select(['auth_id'])->where(['role_id' => $adminModel->role_id])->asArray()->all();
+        // 超级管理员不用检查权限
+        $andWhere = $adminModel->role_id == 1 ? [] : ['in', 'auth_id', array_column($authList, 'auth_id')];
+
+        // 查询字段
+        $field = ['auth_id', 'auth_name', 'auth_pid', 'auth_controller', 'auth_action'];
+
+        // 排序规则
+        $orderBy = ['auth_sort' => SORT_ASC];
+
+        // 一级权限
+        $pidList = self::find()
+            ->select($field)
+            ->where(['auth_pid' => 0])
+            ->andWhere($andWhere)
+            ->orderBy($orderBy)
+            ->asArray()
+            ->all();
+
+        // 二级权限
+        foreach ($pidList as $k => $v) {
+            $pidList[$k]['child'] = self::find()
+                ->select($field)
+                ->where(['auth_pid' => $v['auth_id']])
+                ->andWhere($andWhere)
+                ->orderBy($orderBy)
+                ->asArray()
+                ->all();
+        }
+
+        return $pidList;
+    }
+
+    /**
      * 父级权限
      *
      * @return string
@@ -190,7 +231,6 @@ class Auth extends ActiveRecord
                 }
             }
         }
-
 
         return $pidList;
     }

@@ -12,6 +12,7 @@
 
 namespace backend\controllers;
 
+use backend\models\Auth;
 use Yii;
 use backend\controllers\BaseController;
 
@@ -34,7 +35,9 @@ class IndexController extends BaseController
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // 首页菜单
+        $menu = Auth::getMenu();
+        return $this->render('index', ['menu' => $menu]);
     }
 
     /**

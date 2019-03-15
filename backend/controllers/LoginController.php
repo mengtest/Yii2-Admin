@@ -29,6 +29,9 @@ use yii\web\Controller;
  */
 class LoginController extends Controller
 {
+    // 默认的请求方法
+    public $defaultAction = 'login';
+
     /**
      * 登录
      *
