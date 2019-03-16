@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/X-admin/css/font.css">
     <link rel="stylesheet" href="/X-admin/css/xadmin.css">
-    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="/X-admin/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/X-admin/js/xadmin.js"></script>
     <script type="text/javascript" src="/X-admin/dialog.js"></script>
