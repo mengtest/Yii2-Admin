@@ -23,6 +23,14 @@
     游客: youke 123
 ```
 
+### 基于Redis异步发送邮件实现找回密码功能
+参考 [yii2-queue](https://github.com/duiying/yii2-queue)
+```
+1. 修改 common/config/main-local.php 文件中的邮箱和redis配置
+2. 设置crontab定时任务
+* * * * * /usr/bin/php /data/www/Yii2-Admin/yii mail/send > /dev/null
+```
+
 ### 展示
 ![登录](https://raw.githubusercontent.com/duiying/img/master/yii2-admin-login.png)  
 ![首页](https://raw.githubusercontent.com/duiying/img/master/yii2-admin-index.png)  
